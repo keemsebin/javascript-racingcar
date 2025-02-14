@@ -5,9 +5,9 @@ import { getMaxPosition } from "../src/utils/findMax";
 
 describe("Car 로직 테스트", () => {
   // given
-  let cars;
+  let carPositionsByRound;
   beforeEach(() => {
-    cars = [
+    carPositionsByRound = [
       [
         { name: "세라", position: 2 },
         { name: "리바이", position: 3 },
@@ -28,7 +28,7 @@ describe("Car 로직 테스트", () => {
     jest.spyOn(Math, "random").mockReturnValue(0.5);
 
     // then
-    expect(playRound(cars[0])).toStrictEqual([
+    expect(playRound(carPositionsByRound[0])).toStrictEqual([
       { name: "세라", position: 3 },
       { name: "리바이", position: 4 },
     ]);
@@ -36,14 +36,14 @@ describe("Car 로직 테스트", () => {
 
   test("최대 position을 올바르게 반환한다.", () => {
     // when
-    const max = getMaxPosition(cars[1]);
+    const max = getMaxPosition(carPositionsByRound[1]);
     // then
     expect(max).toBe(4);
   });
 
   test("주어진 배열에서 최종 우승자를 찾아 출력한다.", () => {
     // when
-    const winners = getWinnersByPosition(cars);
+    const winners = getWinnersByPosition(carPositionsByRound);
     // then
     expect(winners.map((car) => car.name)).toStrictEqual(["리바이"]);
   });
