@@ -1,4 +1,4 @@
-import { CAR_NAME, MIN_TRY_COUNT_NUM } from "../constants/race.js";
+import { CAR_NAME, TRY_COUNT } from "../constants/race.js";
 
 export const hasEmptyString = (arr) => {
   return arr.some((item) => item === "");
@@ -9,7 +9,7 @@ export const isLengthLongerThanFive = (arr) => {
 };
 
 export const isNumberZero = (number) => {
-  return Number(number) === MIN_TRY_COUNT_NUM;
+  return Number(number) === TRY_COUNT.MIN_NUM;
 };
 
 export const hasDuplicateNames = (arr) => {
