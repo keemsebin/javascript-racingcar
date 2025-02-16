@@ -1,13 +1,23 @@
-// 주어진 배열에서 최종 우승자를 찾아 출력한다.
+import {
+  describe,
+  beforeEach,
+  afterEach,
+  test,
+  expect,
+  jest,
+} from "@jest/globals";
 
-import { getWinnersByPosition, playRound } from "../src/domain/play";
-import { getMaxPosition } from "../src/utils/findMax";
+import { createCars } from "../src/domain/car.js";
+import { moveCarForward, updateCarPosition } from "../src/domain/play.js";
+import { findWinners } from "../src/domain/winner.js";
+import { findMaxValue } from "../src/utils/findMax.js";
 
 describe("Car 로직 테스트", () => {
   // given
-  let cars;
+  let carPositionsByRound;
+
   beforeEach(() => {
-    cars = [
+    carPositionsByRound = [
       [
         { name: "세라", position: 2 },
         { name: "리바이", position: 3 },
@@ -23,27 +33,43 @@ describe("Car 로직 테스트", () => {
     jest.clearAllMocks();
   });
 
-  test("자동차 경주 진행 시, 랜덤 값이 4이상일 경우 Car 배열의 position 값이 1증가한다.", () => {
+  test("자동차 이름이 담긴 배열을 입력받으면, 각 자동차의 이름과 초기 위치(position 0)를 포함하는 객체 배열로 변환한다.", () => {
+    //given
+    const initCarArr = ["세라", "세이지", "셀린"];
+
     // when
-    jest.spyOn(Math, "random").mockReturnValue(0.5);
+    const carNames = createCars(initCarArr);
 
     // then
-    expect(playRound(cars[0])).toStrictEqual([
-      { name: "세라", position: 3 },
-      { name: "리바이", position: 4 },
+    expect(carNames).toStrictEqual([
+      { name: "세라", position: 0 },
+      { name: "세이지", position: 0 },
+      { name: "셀린", position: 0 },
     ]);
   });
 
-  test("최대 position을 올바르게 반환한다.", () => {
+  test("전진하는 자동차의 position 값을 업데이트한다.", () => {
+    // given
+    const car = { name: "세라", position: 2 };
+    const newPosition = 3;
+
     // when
-    const max = getMaxPosition(cars[1]);
+    const updatedCar = updateCarPosition(car, newPosition);
+
+    // then
+    expect(updatedCar).toEqual({ name: "세라", position: 3 });
+  });
+
+  test("주어진 자동차 배열에서 position 값이 가장 높은 자동차의 position 값을 반환한다.", () => {
+    // when
+    const max = findMaxValue(carPositionsByRound[1], "position");
     // then
     expect(max).toBe(4);
   });
 
-  test("주어진 배열에서 최종 우승자를 찾아 출력한다.", () => {
+  test("최종 라운드에서 가장 멀리 이동한 자동차(우승자)를 찾아 반환한다.", () => {
     // when
-    const winners = getWinnersByPosition(cars);
+    const winners = findWinners(carPositionsByRound);
     // then
     expect(winners.map((car) => car.name)).toStrictEqual(["리바이"]);
   });
