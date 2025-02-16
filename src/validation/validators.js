@@ -9,7 +9,7 @@ export const isLengthLongerThanFive = (arr) => {
 };
 
 export const isNumberZero = (number) => {
-  return number === MIN_TRY_COUNT_NUM;
+  return Number(number) === MIN_TRY_COUNT_NUM;
 };
 
 export const hasDuplicateNames = (arr) => {
