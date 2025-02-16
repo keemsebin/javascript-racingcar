@@ -4,7 +4,6 @@ export const RACE_MOVE = {
 };
 
 export const CAR_NAME = {
-  MIN_LENGTH: 0,
   MAX_LENGTH: 5,
 };
 
