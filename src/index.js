@@ -26,10 +26,10 @@ async function run() {
   const cars = createCars(carNames);
 
   print(OUTPUT.RESULT);
-  const playResult = playRacing(cars, tryCount);
-  playResult.forEach(printProcess);
+  const raceHistory = playRacing(cars, tryCount);
+  raceHistory.forEach(printProcess);
 
-  const winners = findWinners(playResult);
+  const winners = findWinners(raceHistory);
   printWinners(winners);
 }
 
