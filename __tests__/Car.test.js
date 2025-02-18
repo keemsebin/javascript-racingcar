@@ -8,7 +8,6 @@ import {
 } from "@jest/globals";
 
 import { createCars, updateCarPosition } from "../src/domain/car.js";
-import { findWinners } from "../src/domain/winner.js";
 import { findMaxValue } from "../src/utils/findMax.js";
 
 describe("Car 로직 테스트", () => {
@@ -64,12 +63,5 @@ describe("Car 로직 테스트", () => {
     const max = findMaxValue(carPositionsByRound[1], "position");
     // then
     expect(max).toBe(4);
-  });
-
-  test("최종 라운드에서 가장 멀리 이동한 자동차(우승자)를 찾아 반환한다.", () => {
-    // when
-    const winners = findWinners(carPositionsByRound.at(-1));
-    // then
-    expect(winners.map((car) => car.name)).toStrictEqual(["리바이"]);
   });
 });
