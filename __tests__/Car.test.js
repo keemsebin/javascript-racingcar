@@ -7,8 +7,7 @@ import {
   jest,
 } from "@jest/globals";
 
-import { createCars } from "../src/domain/car.js";
-import { updateCarPosition } from "../src/domain/play.js";
+import { createCars, updateCarPosition } from "../src/domain/car.js";
 import { findWinners } from "../src/domain/winner.js";
 import { findMaxValue } from "../src/utils/findMax.js";
 

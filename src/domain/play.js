@@ -1,23 +1,4 @@
-import { RACE_MOVE } from "../constants/race.js";
-import { getRandomNumber } from "../utils/random.js";
-
-export const getNextCarPosition = (position) => {
-  const randomNumber = getRandomNumber();
-  if (randomNumber >= RACE_MOVE.THRESHOLD) {
-    return position + 1;
-  }
-  return position;
-};
-
-export const updateCarPosition = (car, moveResult) => ({
-  ...car,
-  position: moveResult,
-});
-
-export const moveCarForward = (car) => {
-  const newPosition = getNextCarPosition(car.position);
-  return updateCarPosition(car, newPosition);
-};
+import { moveCarForward } from "./car.js";
 
 export const playRounds = (cars) => {
   return cars.map((car) => moveCarForward(car));
