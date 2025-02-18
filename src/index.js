@@ -29,7 +29,8 @@ async function run() {
   const raceHistory = playRacing(cars, tryCount);
   raceHistory.forEach(printProcess);
 
-  const winners = findWinners(raceHistory);
+  const finalRound = raceHistory.at(-1);
+  const winners = findWinners(finalRound);
   printWinners(winners);
 }
 
