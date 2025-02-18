@@ -13,10 +13,14 @@ export const OUTPUT = Object.freeze({
 export const ERROR_PREFIX = "[ERROR]";
 
 export const ERROR = Object.freeze({
-  IS_CAR_NAME_EMPTY: `${ERROR_PREFIX} 자동차 이름이 비어있습니다.\n`,
-  IS_LENGTH_LONGER_THAN_FIVE: `${ERROR_PREFIX} 자동차 이름은 ${CAR_NAME.MAX_LENGTH}글자 이내로 작성주세요.\n`,
-  IS_DUPLICATE_CAR_NAME: `${ERROR_PREFIX} 자동차 이름에 중복이 존재합니다.\n`,
-  IS_TRY_COUNT_EMPTY: `${ERROR_PREFIX} 시도할 횟수가 비어있습니다.\n`,
-  IS_NOT_ZERO: `${ERROR_PREFIX} ${TRY_COUNT.MIN_NUM} 이상의 숫자를 입력해주세요.\n`,
-  IS_NOT_NUMBER: `${ERROR_PREFIX} 숫자를 입력해주세요.\n`,
+  CAR_NAME: {
+    EMPTY: `${ERROR_PREFIX} 자동차 이름이 비어있습니다.\n`,
+    EXCEEDS_MAX_LENGTH: `${ERROR_PREFIX} 자동차 이름은 ${CAR_NAME.MAX_LENGTH}글자 이내로 작성주세요.\n`,
+    DUPLICATE: `${ERROR_PREFIX} 자동차 이름에 중복이 존재합니다.\n`,
+  },
+  TRY_COUNT: {
+    EMPTY: `${ERROR_PREFIX} 시도할 횟수가 비어있습니다.\n`,
+    BELOW_MIN: `${ERROR_PREFIX} ${TRY_COUNT.MIN_NUM} 이상의 숫자를 입력해주세요.\n`,
+    NOT_NUMBER: `${ERROR_PREFIX} 숫자를 입력해주세요.\n`,
+  },
 });

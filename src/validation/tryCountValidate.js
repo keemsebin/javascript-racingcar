@@ -3,14 +3,14 @@ import { ERROR } from "../constants/messages.js";
 
 export const validateCount = (number) => {
   if (isNumberZero(number)) {
-    throw new Error(ERROR.IS_NOT_ZERO);
+    throw new Error(ERROR.TRY_COUNT.BELOW_MIN);
   }
 
   if (isNaN(number)) {
-    throw new Error(ERROR.IS_NOT_NUMBER);
+    throw new Error(ERROR.TRY_COUNT.NOT_NUMBER);
   }
 
   if (number === "") {
-    throw new Error(ERROR.IS_TRY_COUNT_EMPTY);
+    throw new Error(ERROR.TRY_COUNT.EMPTY);
   }
 };

@@ -7,14 +7,14 @@ import { ERROR } from "../constants/messages.js";
 
 export const validateCarNames = (carNamesArr) => {
   if (hasEmptyString(carNamesArr)) {
-    throw new Error(ERROR.IS_CAR_NAME_EMPTY);
+    throw new Error(ERROR.CAR_NAME.EMPTY);
   }
 
   if (isLengthLongerThanFive(carNamesArr)) {
-    throw new Error(ERROR.IS_LENGTH_LONGER_THAN_FIVE);
+    throw new Error(ERROR.CAR_NAME.EXCEEDS_MAX_LENGTH);
   }
 
   if (hasDuplicateNames(carNamesArr)) {
-    throw new Error(ERROR.IS_DUPLICATE_CAR_NAME);
+    throw new Error(ERROR.CAR_NAME.DUPLICATE);
   }
 };
