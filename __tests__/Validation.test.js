@@ -28,7 +28,7 @@ describe("유효성 검사 테스트", () => {
   });
 
   test("자동차 이름이 중복될 경우 true를 반환한다.", () => {
-    const namesArr = hasDuplicateNames(["세라", "세라"]);
-    expect(namesArr).toBeTruthy();
+    const hasDuplicatedName = hasDuplicateNames(["세라", "세라"]);
+    expect(hasDuplicatedName).toBeTruthy();
   });
 });
