@@ -20,7 +20,7 @@ async function run() {
   const tryCount = await retryInput(async () => {
     const getTryCount = await readLineAsync(INPUT.TRY_COUNT);
     validateCount(getTryCount);
-    return getTryCount;
+    return Number(getTryCount);
   });
 
   const cars = createCars(carNames);
